@@ -1,10 +1,8 @@
 package com.drizh2.rolliseum.entity;
 
 import com.drizh2.rolliseum.entity.enums.Roles;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 
@@ -12,21 +10,35 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 @Data
+@Entity
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(unique = true, nullable = false)
     private String username;
+    @Column(nullable = false)
     private String email;
+    @Column(nullable = false, length = 3000)
     private String password;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user", orphanRemoval = true)
     private List<Character> characters = new ArrayList<>();
+
+    @JsonFormat(pattern = "yyyy-mm-dd HH:mm:ss")
+    @Column(updatable = false)
     private LocalDateTime creationDate;
 
+    @ElementCollection(targetClass = Roles.class)
+    @CollectionTable(name = "user_role",
+            joinColumns = @JoinColumn(name = "user_id"))
     private Set<Roles> roles = new HashSet<>();
 
+    @Transient
     private Collection<? extends GrantedAuthority> authorities;
 
+    @PrePersist
     protected void onCreate() {
         this.creationDate = LocalDateTime.now();
     }

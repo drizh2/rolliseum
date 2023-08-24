@@ -5,16 +5,12 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Weapon {
+public class SkillIncrement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String name;
     @Column(nullable = false)
-    private int attackBonus;
-    @Column(nullable = false)
-    private int damage;
-    @Column
-    private String type;
+    private int modificator;
 }
