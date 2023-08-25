@@ -1,8 +1,10 @@
 package com.drizh2.rolliseum.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -87,4 +89,13 @@ public class Character {
 
     @ManyToOne
     private User user;
+
+    @JsonFormat(pattern = "yyyy-mm-dd HH:mm:ss")
+    @Column(updatable = false)
+    private LocalDateTime creationDate;
+
+    @PrePersist
+    private void onCreate() {
+        this.creationDate = LocalDateTime.now();
+    }
 }

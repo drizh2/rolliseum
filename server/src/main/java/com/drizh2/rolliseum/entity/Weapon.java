@@ -12,9 +12,13 @@ public class Weapon {
     @Column(nullable = false, unique = true)
     private String name;
     @Column(nullable = false)
+    private String type;
+    @Column(nullable = false)
+    private String range;
+    @Column(nullable = false)
     private int attackBonus;
     @Column(nullable = false)
     private int damage;
     @Column
-    private String type;
+    private String damageType;
 }

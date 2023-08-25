@@ -12,5 +12,5 @@ public class SkillIncrement {
     @Column(nullable = false)
     private String name;
     @Column(nullable = false)
-    private int modificator;
+    private Integer modificator;
 }

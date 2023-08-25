@@ -18,9 +18,15 @@ public class Feature {
     @ManyToOne
     private Class aClass;
     @JsonIgnore
+    @Column
+    private int classLevel;
+    @JsonIgnore
     @ManyToOne
     private Race race;
     @JsonIgnore
     @ManyToOne
     private Subclass subclass;
+    @JsonIgnore
+    @Column
+    private int subclassLevel;
 }
