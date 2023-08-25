@@ -12,5 +12,5 @@ import java.util.Optional;
 public interface SubclassRepository extends JpaRepository<Subclass, Long> {
     Optional<Subclass> findSubclassById(Long id);
     Optional<Subclass> findSubclassByName(String name);
-    List<Subclass> findAllByAClassOrderByNameAsc(Class aClass);
+    List<Subclass> findAllByClasOrderByNameAsc(Class clas);
 }

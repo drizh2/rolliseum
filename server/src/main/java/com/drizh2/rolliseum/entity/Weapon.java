@@ -13,7 +13,7 @@ public class Weapon {
     private String name;
     @Column(nullable = false)
     private String type;
-    @Column(nullable = false)
+    @Column(nullable = false, name = "farness")
     private String range;
     @Column(nullable = false)
     private int attackBonus;

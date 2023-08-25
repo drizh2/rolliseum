@@ -27,5 +27,5 @@ public class Spell {
     @Column(columnDefinition = "text")
     private String caption;
     @ManyToMany(fetch = FetchType.LAZY)
-    private List<Class> aClass;
+    private List<Class> clas;
 }

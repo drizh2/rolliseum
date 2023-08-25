@@ -16,5 +16,5 @@ public class Subclass {
     @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER, mappedBy = "subclass", orphanRemoval = true)
     private List<Feature> subclassFeatures;
     @OneToOne
-    private Class aClass;
+    private Class clas;
 }

@@ -22,7 +22,7 @@ public class Class {
     private int nextLevelHits;
     @OneToOne
     private Subclass subclass;
-    @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER, mappedBy = "aClass", orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER, mappedBy = "clas", orphanRemoval = true)
     private List<Feature> features;
     @Column
     @ElementCollection(targetClass = String.class)

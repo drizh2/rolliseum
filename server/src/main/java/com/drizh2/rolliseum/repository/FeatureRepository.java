@@ -14,7 +14,7 @@ import java.util.Optional;
 public interface FeatureRepository extends JpaRepository<Feature, Long> {
     Optional<Feature> findFeatureById(Long id);
     Optional<Feature> findFeatureByName(String name);
-    List<Feature> findAllByClassOrderByClassLevelAsc(Class aClass);
+    List<Feature> findAllByClasOrderByClassLevelAsc(Class clas);
     Optional<Feature> findAllByRace(Race race);
     List<Feature> findAllBySubclassOrderBySubclassLevelAsc(Subclass subclass);
 }

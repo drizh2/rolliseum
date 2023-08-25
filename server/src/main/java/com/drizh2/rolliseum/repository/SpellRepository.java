@@ -12,5 +12,5 @@ import java.util.Optional;
 public interface SpellRepository extends JpaRepository<Spell, Long> {
     Optional<Spell> findSpellById(Long id);
     Optional<Spell> findSpellByName(String name);
-    List<Spell> findAllByAClassOrderByName(Class aClass);
+    List<Spell> findAllByClasOrderByName(Class clas);
 }

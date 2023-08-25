@@ -18,7 +18,7 @@ public class Character {
     @Column(nullable = false)
     private String name;
     @ManyToOne(fetch = FetchType.LAZY)
-    private Class aClass;
+    private Class clas;
     @ManyToOne(fetch = FetchType.LAZY)
     private Race race;
     @Column(nullable = false)

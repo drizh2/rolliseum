@@ -16,7 +16,7 @@ public class Feature {
     private String content;
     @JsonIgnore
     @ManyToOne
-    private Class aClass;
+    private Class clas;
     @JsonIgnore
     @Column
     private int classLevel;
