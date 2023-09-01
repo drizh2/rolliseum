@@ -23,6 +23,7 @@ public class User implements UserDetails {
     private String email;
     @Column(nullable = false, length = 3000)
     private String password;
+    private String activationCode;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user", orphanRemoval = true)
     private List<Character> characters = new ArrayList<>();

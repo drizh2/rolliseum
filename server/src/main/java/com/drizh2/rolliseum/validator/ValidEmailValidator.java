@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 
 public class ValidEmailValidator implements ConstraintValidator<ValidEmail, String> {
 
-    private static final String PATTERN = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\\\.[A-Za-z0-9-]+)*(\\\\.[A-Za-z]{2,})$";
+    private static final String PATTERN = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
 
     @Override
     public void initialize(ValidEmail constraintAnnotation) {
