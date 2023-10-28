@@ -20,8 +20,8 @@ public class Class {
     private int firstLevelHits;
     @Column(nullable = false)
     private int nextLevelHits;
-    @OneToOne
-    private Subclass subclass;
+    @OneToMany
+    private List<Subclass> subclasses;
     @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER, mappedBy = "clas", orphanRemoval = true)
     private List<Feature> features;
     @Column

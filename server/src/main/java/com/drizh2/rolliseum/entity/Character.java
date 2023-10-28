@@ -20,6 +20,8 @@ public class Character {
     @ManyToOne(fetch = FetchType.LAZY)
     private Class clas;
     @ManyToOne(fetch = FetchType.LAZY)
+    private Subclass subclass;
+    @ManyToOne(fetch = FetchType.LAZY)
     private Race race;
     @Column(nullable = false)
     private int level;

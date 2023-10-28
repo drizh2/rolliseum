@@ -1,5 +1,6 @@
 package com.drizh2.rolliseum.service;
 
+import com.drizh2.rolliseum.dto.UserDTO;
 import com.drizh2.rolliseum.entity.User;
 import com.drizh2.rolliseum.entity.enums.Roles;
 import com.drizh2.rolliseum.exception.UserExistsException;
@@ -8,9 +9,11 @@ import com.drizh2.rolliseum.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.security.Principal;
 import java.util.UUID;
 
 @Service
@@ -68,5 +71,27 @@ public class UserService {
         userRepository.save(user);
 
         return true;
+    }
+
+    public User updateUser(UserDTO userDTO, Principal principal) {
+        User user = getUserByPrincipal(principal);
+        user.setUsername(userDTO.getUsername());
+        user.setEmail(userDTO.getEmail());
+
+        return userRepository.save(user);
+    }
+
+    public User getCurrentUser(Principal principal) {
+        return getUserByPrincipal(principal);
+    }
+
+    private User getUserByPrincipal(Principal principal) {
+        return userRepository.findUserByUsername(principal.getName())
+                .orElseThrow(() -> new UsernameNotFoundException("User has not been found!"));
+    }
+
+    public User getUserById(Long id) {
+        return userRepository.findUserById(id)
+                .orElseThrow(() -> new UsernameNotFoundException("User has not been found!"));
     }
 }

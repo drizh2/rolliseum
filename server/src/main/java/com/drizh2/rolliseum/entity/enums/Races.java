@@ -1,6 +1,5 @@
 package com.drizh2.rolliseum.entity.enums;
 
-import lombok.Data;
 import lombok.Getter;
 
 import java.util.HashMap;

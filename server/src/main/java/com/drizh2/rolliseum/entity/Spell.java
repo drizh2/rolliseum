@@ -1,6 +1,7 @@
 package com.drizh2.rolliseum.entity;
 
 import com.drizh2.rolliseum.entity.enums.Components;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -26,6 +27,10 @@ public class Spell {
     private List<Components> components;
     @Column(columnDefinition = "text")
     private String caption;
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY)
-    private List<Class> clas;
+    private List<Class> classes;
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.LAZY)
+    private List<Race> races;
 }
