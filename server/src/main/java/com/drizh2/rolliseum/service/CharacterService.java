@@ -55,7 +55,7 @@ public class CharacterService {
                 .orElseThrow(() -> new UsernameNotFoundException("User has not been found!"));
     }
 
-    private Character getCharacterById(Long id) {
+    public Character getCharacterById(Long id) {
         return characterRepository.findCharacterById(id)
                 .orElseThrow(() -> new UsernameNotFoundException("Character has not been found!"));
     }
