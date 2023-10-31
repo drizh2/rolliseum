@@ -2,6 +2,7 @@ package com.drizh2.rolliseum.service;
 
 import com.drizh2.rolliseum.dto.RaceDTO;
 import com.drizh2.rolliseum.entity.Race;
+import com.drizh2.rolliseum.exception.RaceNotFoundException;
 import com.drizh2.rolliseum.repository.RaceRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,5 +35,10 @@ public class RaceService {
         LOG.info("Race {} is creating!", race.getName());
 
         return raceRepository.save(race);
+    }
+
+    public Race getRaceById(Long id) {
+        return raceRepository.findRaceById(id)
+                .orElseThrow(() -> new RaceNotFoundException("Race has not been found"));
     }
 }

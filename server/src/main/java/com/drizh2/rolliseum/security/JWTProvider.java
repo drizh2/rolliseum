@@ -57,7 +57,7 @@ public class JWTProvider {
                 .setSigningKey(SecurityConstants.SECRET)
                 .parseClaimsJws(token)
                 .getBody();
-        String id = claims.getId();
+        String id = (String) claims.get("id");
         return Long.parseLong(id);
     }
 }
