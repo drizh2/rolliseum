@@ -9,6 +9,7 @@ public class RaceFacade {
     public RaceDTO raceToRaceDTO(Race race) {
         RaceDTO raceDTO = new RaceDTO();
 
+        raceDTO.setId(race.getId());
         raceDTO.setName(race.getName());
         raceDTO.setType(race.getType());
         raceDTO.setStats(race.getStats());

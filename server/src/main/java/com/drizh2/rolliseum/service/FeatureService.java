@@ -6,6 +6,7 @@ import com.drizh2.rolliseum.repository.FeatureRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -56,5 +57,10 @@ public class FeatureService {
         LOG.info("Creating {} feature for subclass {}", feature.getName(), feature.getSubclass().getName());
 
         return featureRepository.save(feature);
+    }
+
+    public Feature getFeatureById(Long id) {
+        return featureRepository.findFeatureById(id)
+                .orElseThrow(() -> new UsernameNotFoundException("Feature has not been found!"));
     }
 }

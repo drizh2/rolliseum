@@ -4,6 +4,7 @@ import com.drizh2.rolliseum.entity.enums.Races;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,14 +17,14 @@ public class Race {
     private Races name;
     @Column(nullable = false)
     private String type;
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     private List<SkillIncrement> stats;
     @Column(nullable = false)
     private String size;
     @Column(nullable = false)
     private int speed;
-    @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER, mappedBy = "race", orphanRemoval = true)
-    private List<Feature> raceFeatures;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "race", orphanRemoval = true)
+    private List<Feature> raceFeatures = new ArrayList<>();
     @Column
     @ElementCollection(targetClass = String.class)
     private List<String> languages;

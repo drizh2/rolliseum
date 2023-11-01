@@ -9,6 +9,7 @@ public class ClassFacade {
     public ClassDTO classToClassDTO(Class clas) {
         ClassDTO classDTO = new ClassDTO();
 
+        classDTO.setId(clas.getId());
         classDTO.setName(clas.getName());
         classDTO.setHitDice(clas.getHitDice());
         classDTO.setFirstLevelHits(clas.getFirstLevelHits());

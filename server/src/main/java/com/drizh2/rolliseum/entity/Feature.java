@@ -22,6 +22,7 @@ public class Feature {
     private int classLevel;
     @JsonIgnore
     @ManyToOne
+    @JoinColumn(name = "race_id")
     private Race race;
     @JsonIgnore
     @ManyToOne
