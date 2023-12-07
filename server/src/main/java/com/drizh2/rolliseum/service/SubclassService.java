@@ -1,8 +1,11 @@
 package com.drizh2.rolliseum.service;
 
+import com.drizh2.rolliseum.dto.FeatureDTO;
 import com.drizh2.rolliseum.dto.SubclassDTO;
-import com.drizh2.rolliseum.entity.Class;
+import com.drizh2.rolliseum.entity.Feature;
 import com.drizh2.rolliseum.entity.Subclass;
+import com.drizh2.rolliseum.facade.FeatureFacade;
+import com.drizh2.rolliseum.facade.SubclassFacade;
 import com.drizh2.rolliseum.repository.SubclassRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,20 +18,27 @@ public class SubclassService {
     public static final Logger LOG = LoggerFactory.getLogger(SubclassService.class);
 
     private final SubclassRepository subclassRepository;
+    private final FeatureService featureService;
 
     @Autowired
-    public SubclassService(SubclassRepository subclassRepository) {
+    public SubclassService(SubclassRepository subclassRepository, FeatureService featureService) {
         this.subclassRepository = subclassRepository;
+        this.featureService = featureService;
     }
 
-    public Subclass createSubclass(SubclassDTO subclassDTO, Class clas) {
-        Subclass subclass = new Subclass();
+    public Subclass createSubclass(SubclassDTO subclassDTO) {
+        Subclass subclass = SubclassFacade.subclassDTOToSubclass(subclassDTO);
 
-        subclass.setName(subclassDTO.getName());
-        subclass.setSubclassFeatures(subclassDTO.getSubclassFeatures());
-        subclass.setClas(clas);
+        subclass = subclassRepository.save(subclass);
 
-        LOG.info("Subclass {}({}) is creating", subclass.getName(), clas.getName());
+        for (FeatureDTO featureDTO : subclassDTO.getSubclassFeatures()) {
+            Feature feature = FeatureFacade.featureDTOToFeature(featureDTO);
+            feature.setSubclass(subclass);
+            Feature tempFeature = featureService.createFeatureForSubclass(FeatureFacade.featureToDTO(feature));
+            subclass.getSubclassFeatures().add(tempFeature);
+        }
+
+        LOG.info("Subclass {} is creating", subclass.getName());
 
         return subclassRepository.save(subclass);
     }

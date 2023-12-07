@@ -30,16 +30,14 @@ import java.util.Optional;
 public class CharacterController {
 
     private final CharacterService characterService;
-    private final CharacterFacade characterFacade;
     private final ResponseErrorValidator responseErrorValidator;
     private final UserService userService;
     private final RaceService raceService;
     private final ClassService classService;
 
     @Autowired
-    public CharacterController(CharacterService characterService, CharacterFacade characterFacade, ResponseErrorValidator responseErrorValidator, UserService userService, RaceService raceService, ClassService classService) {
+    public CharacterController(CharacterService characterService, ResponseErrorValidator responseErrorValidator, UserService userService, RaceService raceService, ClassService classService) {
         this.characterService = characterService;
-        this.characterFacade = characterFacade;
         this.responseErrorValidator = responseErrorValidator;
         this.userService = userService;
         this.raceService = raceService;
@@ -49,7 +47,7 @@ public class CharacterController {
     @GetMapping("/{characterId}")
     public ResponseEntity<CharacterDTO> getCharacterById(@PathVariable("characterId") String characterId) {
         Character character = characterService.getCharacterById(Long.parseLong(characterId));
-        CharacterDTO characterDTO = characterFacade.characterToCharacterDTO(character);
+        CharacterDTO characterDTO = CharacterFacade.characterToCharacterDTO(character);
 
         return new ResponseEntity<>(characterDTO, HttpStatus.OK);
     }
@@ -65,7 +63,7 @@ public class CharacterController {
         }
 
         Character character = characterService.createCharacter(characterDTO, principal);
-        CharacterDTO finalCharacter = characterFacade.characterToCharacterDTO(character);
+        CharacterDTO finalCharacter = CharacterFacade.characterToCharacterDTO(character);
 
         return new ResponseEntity<>(finalCharacter, HttpStatus.OK);
     }
@@ -88,7 +86,7 @@ public class CharacterController {
             Character character = optionalCharacter.get();
             character.setRace(race);
 
-            CharacterDTO characterDTO = characterFacade.characterToCharacterDTO(character);
+            CharacterDTO characterDTO = CharacterFacade.characterToCharacterDTO(character);
             characterService.updateCharacter(characterDTO, Long.parseLong(characterId));
             return ResponseEntity.ok(characterDTO);
         } else {
@@ -112,7 +110,7 @@ public class CharacterController {
             Character character = optionalCharacter.get();
             character.setClas(clas);
 
-            CharacterDTO characterDTO = characterFacade.characterToCharacterDTO(character);
+            CharacterDTO characterDTO = CharacterFacade.characterToCharacterDTO(character);
             characterService.updateCharacter(characterDTO, Long.parseLong(characterId));
             return ResponseEntity.ok(characterDTO);
         } else {

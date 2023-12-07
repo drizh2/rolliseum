@@ -1,12 +1,17 @@
 package com.drizh2.rolliseum.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 import java.util.Map;
 
 @Entity
-@Data
+@Getter
+@Setter
+@Table(name = "statistics")
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Statistic {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

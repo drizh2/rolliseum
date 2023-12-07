@@ -1,11 +1,15 @@
 package com.drizh2.rolliseum.dto;
 
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
-@Data
+@Getter
+@Setter
+@Builder
 public class BackgroundDTO {
     private Long id;
     @NotNull

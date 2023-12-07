@@ -1,21 +1,22 @@
 package com.drizh2.rolliseum.dto;
 
-import com.drizh2.rolliseum.entity.Class;
-import com.drizh2.rolliseum.entity.Race;
-import com.drizh2.rolliseum.entity.Subclass;
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
+@Builder
 public class FeatureDTO {
     private Long id;
     @NotNull
     private String name;
     @NotNull
     private String content;
-    private Class clas;
+    private ClassDTO clas;
     private int classLevel;
-    private Race race;
-    private Subclass subclass;
+    private RaceDTO race;
+    private SubclassDTO subclass;
     private int subclassLevel;
 }

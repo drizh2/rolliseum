@@ -2,16 +2,22 @@ package com.drizh2.rolliseum.facade;
 
 import com.drizh2.rolliseum.dto.UserDTO;
 import com.drizh2.rolliseum.entity.User;
-import org.springframework.stereotype.Component;
 
-@Component
 public class UserFacade {
-    public UserDTO userToUserDTO(User user) {
-        UserDTO userDTO = new UserDTO();
 
-        userDTO.setUsername(user.getUsername());
-        userDTO.setEmail(user.getEmail());
+    private UserFacade() {}
 
-        return userDTO;
+    public static UserDTO userToUserDTO(User user) {
+        return UserDTO.builder()
+                .username(user.getUsername())
+                .email(user.getEmail())
+                .build();
+    }
+
+    public static User userDTOToUser(UserDTO userDTO) {
+        return User.builder()
+                .username(userDTO.getUsername())
+                .email(userDTO.getEmail())
+                .build();
     }
 }

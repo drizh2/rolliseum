@@ -1,14 +1,16 @@
 package com.drizh2.rolliseum.dto;
 
-import com.drizh2.rolliseum.entity.Feature;
-import com.drizh2.rolliseum.entity.Subclass;
-import com.drizh2.rolliseum.entity.enums.Classes;
+import com.drizh2.rolliseum.entity.enums.*;
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
-@Data
+@Getter
+@Setter
+@Builder
 public class ClassDTO {
     private Long id;
     @NotNull
@@ -20,19 +22,21 @@ public class ClassDTO {
     @NotNull
     private int nextLevelHits;
     @NotNull
-    private List<Subclass> subclasses;
+    private List<SubclassDTO> subclasses;
     @NotNull
-    private List<Feature> features;
+    private List<FeatureDTO> features;
     @NotNull
-    private List<String> armor;
+    private List<ArmorTypes> armor;
     @NotNull
-    private List<String> weapons;
+    private List<WeaponTypes> weapons;
     @NotNull
-    private List<String> tools;
+    private List<ToolDTO> tools;
     @NotNull
-    private List<String> savingThrows;
+    private List<SavingThrows> savingThrows;
     @NotNull
-    private List<String> stats;
+    private List<Skills> skills;
+    @NotNull
+    private int countOfStats;
     @NotNull
     private int spellSavingThrow;
 }

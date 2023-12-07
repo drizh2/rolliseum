@@ -2,10 +2,15 @@ package com.drizh2.rolliseum.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 @Entity
-@Data
+@Getter
+@Setter
+@Table(name = "features")
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Feature {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,6 +21,7 @@ public class Feature {
     private String content;
     @JsonIgnore
     @ManyToOne
+    @JoinColumn(name = "class_id")
     private Class clas;
     @JsonIgnore
     @Column
@@ -26,6 +32,7 @@ public class Feature {
     private Race race;
     @JsonIgnore
     @ManyToOne
+    @JoinColumn(name = "subclass_id")
     private Subclass subclass;
     @JsonIgnore
     @Column

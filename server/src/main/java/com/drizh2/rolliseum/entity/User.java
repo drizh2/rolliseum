@@ -3,15 +3,20 @@ package com.drizh2.rolliseum.entity;
 import com.drizh2.rolliseum.entity.enums.Roles;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDateTime;
 import java.util.*;
 
-@Data
 @Entity
+@Getter
+@Setter
+@Table(name = "users")
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class User implements UserDetails {
 
     @Id
@@ -43,9 +48,6 @@ public class User implements UserDetails {
     @PrePersist
     protected void onCreate() {
         this.creationDate = LocalDateTime.now();
-    }
-
-    public User() {
     }
 
     public User(Long id, String username, String email, String password, Collection<? extends GrantedAuthority> authorities) {

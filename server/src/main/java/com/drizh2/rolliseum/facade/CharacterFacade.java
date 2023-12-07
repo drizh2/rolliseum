@@ -1,49 +1,119 @@
 package com.drizh2.rolliseum.facade;
 
-import com.drizh2.rolliseum.dto.CharacterDTO;
+import com.drizh2.rolliseum.dto.*;
 import com.drizh2.rolliseum.entity.Character;
-import org.springframework.stereotype.Component;
+import com.drizh2.rolliseum.entity.Class;
+import com.drizh2.rolliseum.entity.*;
 
-@Component
+import java.util.List;
+
 public class CharacterFacade {
-    public CharacterDTO characterToCharacterDTO(Character character) {
-        CharacterDTO characterDTO = new CharacterDTO();
 
-        characterDTO.setName(character.getName());
-        characterDTO.setClas(character.getClas());
-        characterDTO.setRace(character.getRace());
-        characterDTO.setSubclass(character.getSubclass());
-        characterDTO.setLevel(character.getLevel());
-        characterDTO.setBackground(character.getBackground());
-        characterDTO.setAlignment(character.getAlignment());
-        characterDTO.setPlayerName(character.getPlayerName());
+    private CharacterFacade() {}
 
-        characterDTO.setStrengthStat(character.getStrengthStat());
-        characterDTO.setDexterityStat(character.getDexterityStat());
-        characterDTO.setConstitutionStat(character.getConstitutionStat());
-        characterDTO.setIntelligenceStat(character.getIntelligenceStat());
-        characterDTO.setWisdomStat(character.getWisdomStat());
-        characterDTO.setCharismaStat(character.getCharismaStat());
+    public static CharacterDTO characterToCharacterDTO(Character character) {
+        ClassDTO classDTO = ClassFacade.classToClassDTO(character.getClas());
 
-        characterDTO.setArmorClass(character.getArmorClass());
-        characterDTO.setTotalHitDice(character.getTotalHitDice());
+        RaceDTO raceDTO = RaceFacade.raceToRaceDTO(character.getRace());
 
-        characterDTO.setWeapons(character.getWeapons());
+        SubclassDTO subclassDTO = SubclassFacade.subclassToDTO(character.getSubclass());
 
-        characterDTO.setPersonaltyTraits(character.getPersonaltyTraits());
-        characterDTO.setIdeals(character.getIdeals());
-        characterDTO.setBonds(character.getBonds());
-        characterDTO.setFlaws(character.getFlaws());
+        BackgroundDTO backgroundDTO = BackgroundFacade.backgroundToDTO(character.getBackground());
 
-        characterDTO.setAge(character.getAge());
-        characterDTO.setEyes(character.getEyes());
-        characterDTO.setHeight(character.getHeight());
-        characterDTO.setSkin(character.getSkin());
-        characterDTO.setWeight(character.getWeight());
-        characterDTO.setHair(character.getHair());
-        characterDTO.setAppearance(character.getAppearance());
-        characterDTO.setBackstory(character.getBackstory());
+        StatisticDTO strengthStatisticDTO = StatisticFacade.statisticToStatisticDTO(character.getStrengthStat());
+        StatisticDTO dexterityStatisticDTO = StatisticFacade.statisticToStatisticDTO(character.getDexterityStat());
+        StatisticDTO constitutionStatisticDTO = StatisticFacade.statisticToStatisticDTO(character.getConstitutionStat());
+        StatisticDTO intelligenceStatisticDTO = StatisticFacade.statisticToStatisticDTO(character.getIntelligenceStat());
+        StatisticDTO wisdomStatisticDTO = StatisticFacade.statisticToStatisticDTO(character.getWisdomStat());
+        StatisticDTO charismaStatisticDTO = StatisticFacade.statisticToStatisticDTO(character.getCharismaStat());
 
-        return characterDTO;
+        List<WeaponDTO> weaponDTOList = character.getWeapons().stream()
+                .map(WeaponFacade::weaponToWeaponDTO)
+                .toList();
+
+        return CharacterDTO.builder()
+                .name(character.getName())
+                .clas(classDTO)
+                .race(raceDTO)
+                .subclass(subclassDTO)
+                .level(character.getLevel())
+                .background(backgroundDTO)
+                .alignment(character.getAlignment())
+                .playerName(character.getPlayerName())
+                .strengthStat(strengthStatisticDTO)
+                .dexterityStat(dexterityStatisticDTO)
+                .constitutionStat(constitutionStatisticDTO)
+                .intelligenceStat(intelligenceStatisticDTO)
+                .wisdomStat(wisdomStatisticDTO)
+                .charismaStat(charismaStatisticDTO)
+                .armorClass(character.getArmorClass())
+                .totalHitDice(character.getTotalHitDice())
+                .weapons(weaponDTOList)
+                .personaltyTraits(character.getPersonaltyTraits())
+                .ideals(character.getIdeals())
+                .bonds(character.getBonds())
+                .flaws(character.getFlaws())
+                .age(character.getAge())
+                .eyes(character.getEyes())
+                .height(character.getHeight())
+                .skin(character.getSkin())
+                .weight(character.getWeight())
+                .hair(character.getHair())
+                .appearance(character.getAppearance())
+                .backstory(character.getBackstory())
+                .build();
+    }
+
+    public static Character characterDTOToCharacter(CharacterDTO characterDTO) {
+        Class clas = ClassFacade.classDTOToClass(characterDTO.getClas());
+
+        Race race = RaceFacade.raceDTOToRace(characterDTO.getRace());
+
+        Subclass subclass = SubclassFacade.subclassDTOToSubclass(characterDTO.getSubclass());
+
+        Background background = BackgroundFacade.DTOToBackground(characterDTO.getBackground());
+
+        Statistic strengthStatistic = StatisticFacade.statisticDTOToStatistic(characterDTO.getStrengthStat());
+        Statistic dexterityStatistic = StatisticFacade.statisticDTOToStatistic(characterDTO.getDexterityStat());
+        Statistic constitutionStatistic = StatisticFacade.statisticDTOToStatistic(characterDTO.getConstitutionStat());
+        Statistic intelligenceStatistic = StatisticFacade.statisticDTOToStatistic(characterDTO.getIntelligenceStat());
+        Statistic wisdomStatistic = StatisticFacade.statisticDTOToStatistic(characterDTO.getWisdomStat());
+        Statistic charismaStatistic = StatisticFacade.statisticDTOToStatistic(characterDTO.getCharismaStat());
+
+        List<Weapon> weaponList = characterDTO.getWeapons().stream()
+                .map(WeaponFacade::weaponDTOToWeapon)
+                .toList();
+
+        return Character.builder()
+                .name(characterDTO.getName())
+                .clas(clas)
+                .race(race)
+                .subclass(subclass)
+                .level(characterDTO.getLevel())
+                .background(background)
+                .alignment(characterDTO.getAlignment())
+                .playerName(characterDTO.getPlayerName())
+                .strengthStat(strengthStatistic)
+                .dexterityStat(dexterityStatistic)
+                .constitutionStat(constitutionStatistic)
+                .intelligenceStat(intelligenceStatistic)
+                .wisdomStat(wisdomStatistic)
+                .charismaStat(charismaStatistic)
+                .armorClass(characterDTO.getArmorClass())
+                .totalHitDice(characterDTO.getTotalHitDice())
+                .weapons(weaponList)
+                .personaltyTraits(characterDTO.getPersonaltyTraits())
+                .ideals(characterDTO.getIdeals())
+                .bonds(characterDTO.getBonds())
+                .flaws(characterDTO.getFlaws())
+                .age(characterDTO.getAge())
+                .eyes(characterDTO.getEyes())
+                .height(characterDTO.getHeight())
+                .skin(characterDTO.getSkin())
+                .weight(characterDTO.getWeight())
+                .hair(characterDTO.getHair())
+                .appearance(characterDTO.getAppearance())
+                .backstory(characterDTO.getBackstory())
+                .build();
     }
 }

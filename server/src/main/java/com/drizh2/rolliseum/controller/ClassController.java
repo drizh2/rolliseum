@@ -16,13 +16,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/class")
 public class ClassController {
     private final ClassService classService;
-    private final ClassFacade classFacade;
     private final ResponseErrorValidator responseErrorValidator;
 
     @Autowired
-    public ClassController(ClassService classService, ClassFacade classFacade, ResponseErrorValidator responseErrorValidator) {
+    public ClassController(ClassService classService, ResponseErrorValidator responseErrorValidator) {
         this.classService = classService;
-        this.classFacade = classFacade;
         this.responseErrorValidator = responseErrorValidator;
     }
 
@@ -35,7 +33,7 @@ public class ClassController {
         }
 
         Class clas = classService.createClass(classDTO);
-        ClassDTO finalClass = classFacade.classToClassDTO(clas);
+        ClassDTO finalClass = ClassFacade.classToClassDTO(clas);
 
         return ResponseEntity.ok(finalClass);
     }
@@ -43,7 +41,7 @@ public class ClassController {
     @GetMapping("/{classId}")
     public ResponseEntity<ClassDTO> getClassById(@PathVariable("classId") String classId) {
         Class clas = classService.getClassById(Long.parseLong(classId));
-        ClassDTO classDTO = classFacade.classToClassDTO(clas);
+        ClassDTO classDTO = ClassFacade.classToClassDTO(clas);
 
         return ResponseEntity.ok(classDTO);
     }

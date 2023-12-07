@@ -2,6 +2,7 @@ package com.drizh2.rolliseum.service;
 
 import com.drizh2.rolliseum.dto.SpellDTO;
 import com.drizh2.rolliseum.entity.Spell;
+import com.drizh2.rolliseum.facade.SpellFacade;
 import com.drizh2.rolliseum.repository.SpellRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,15 +24,7 @@ public class SpellService {
     }
 
     public Spell createSpellForClass(SpellDTO spellDTO) {
-        Spell spell = new Spell();
-
-        spell.setName(spellDTO.getName());
-        spell.setTime(spellDTO.getTime());
-        spell.setDistance(spellDTO.getDistance());
-        spell.setDuration(spellDTO.getDuration());
-        spell.setComponents(spellDTO.getComponents());
-        spell.setCaption(spellDTO.getCaption());
-        spell.setClasses(spellDTO.getClasses());
+        Spell spell = SpellFacade.spellDTOToSpell(spellDTO);
 
         String collect = spell.getClasses().stream()
                 .map(c -> c.getName().name())
@@ -43,15 +36,7 @@ public class SpellService {
     }
 
     public Spell createSpellForRace(SpellDTO spellDTO) {
-        Spell spell = new Spell();
-
-        spell.setName(spellDTO.getName());
-        spell.setTime(spellDTO.getTime());
-        spell.setDistance(spellDTO.getDistance());
-        spell.setDuration(spellDTO.getDuration());
-        spell.setComponents(spellDTO.getComponents());
-        spell.setCaption(spellDTO.getCaption());
-        spell.setRaces(spellDTO.getRaces());
+        Spell spell = SpellFacade.spellDTOToSpell(spellDTO);
 
         String collect = spell.getRaces().stream()
                 .map(r -> r.getName().name())
@@ -63,16 +48,7 @@ public class SpellService {
     }
 
     public Spell createSpellForClassAndRace(SpellDTO spellDTO) {
-        Spell spell = new Spell();
-
-        spell.setName(spellDTO.getName());
-        spell.setTime(spellDTO.getTime());
-        spell.setDistance(spellDTO.getDistance());
-        spell.setDuration(spellDTO.getDuration());
-        spell.setComponents(spellDTO.getComponents());
-        spell.setCaption(spellDTO.getCaption());
-        spell.setClasses(spellDTO.getClasses());
-        spell.setRaces(spellDTO.getRaces());
+        Spell spell = SpellFacade.spellDTOToSpell(spellDTO);
 
         String collectClasses = spell.getClasses().stream()
                 .map(c -> c.getName().name())

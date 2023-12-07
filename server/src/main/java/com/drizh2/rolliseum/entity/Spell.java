@@ -3,12 +3,17 @@ package com.drizh2.rolliseum.entity;
 import com.drizh2.rolliseum.entity.enums.Components;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 import java.util.List;
 
 @Entity
-@Data
+@Getter
+@Setter
+@Table(name = "spells")
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Spell {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -2,20 +2,30 @@ package com.drizh2.rolliseum.facade;
 
 import com.drizh2.rolliseum.dto.BackgroundDTO;
 import com.drizh2.rolliseum.entity.Background;
-import org.springframework.stereotype.Component;
 
-@Component
 public class BackgroundFacade {
-    public BackgroundDTO backgroundToDTO(Background background) {
-        BackgroundDTO backgroundDTO = new BackgroundDTO();
 
-        backgroundDTO.setName(background.getName());
-        backgroundDTO.setStats(background.getStats());
-        backgroundDTO.setLanguages(background.getLanguages());
-        backgroundDTO.setEquip(background.getEquip());
-        backgroundDTO.setSkills(background.getSkills());
-        backgroundDTO.setCaption(background.getCaption());
+    private BackgroundFacade() {}
 
-        return backgroundDTO;
+    public static BackgroundDTO backgroundToDTO(Background background) {
+        return BackgroundDTO.builder()
+                .name(background.getName())
+                .stats(background.getStats())
+                .languages(background.getLanguages())
+                .equip(background.getEquip())
+                .skills(background.getSkills())
+                .caption(background.getCaption())
+                .build();
+    }
+
+    public static Background DTOToBackground(BackgroundDTO backgroundDTO) {
+        return Background.builder()
+                .name(backgroundDTO.getName())
+                .stats(backgroundDTO.getStats())
+                .languages(backgroundDTO.getLanguages())
+                .equip(backgroundDTO.getEquip())
+                .skills(backgroundDTO.getSkills())
+                .caption(backgroundDTO.getCaption())
+                .build();
     }
 }

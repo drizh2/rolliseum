@@ -16,13 +16,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/race")
 public class RaceController {
     private final RaceService raceService;
-    private final RaceFacade raceFacade;
     private final ResponseErrorValidator responseErrorValidator;
 
     @Autowired
-    public RaceController(RaceService raceService, RaceFacade raceFacade, ResponseErrorValidator responseErrorValidator) {
+    public RaceController(RaceService raceService, ResponseErrorValidator responseErrorValidator) {
         this.raceService = raceService;
-        this.raceFacade = raceFacade;
         this.responseErrorValidator = responseErrorValidator;
     }
 
@@ -36,7 +34,7 @@ public class RaceController {
         }
 
         Race race = raceService.createRace(raceDTO);
-        RaceDTO finalRace = raceFacade.raceToRaceDTO(race);
+        RaceDTO finalRace = RaceFacade.raceToRaceDTO(race);
 
         return ResponseEntity.ok(finalRace);
     }
@@ -44,7 +42,7 @@ public class RaceController {
     @GetMapping("/{raceId}")
     public ResponseEntity<RaceDTO> getRaceById(@PathVariable("raceId") String raceId) {
         Race race = raceService.getRaceById(Long.parseLong(raceId));
-        RaceDTO raceDTO = raceFacade.raceToRaceDTO(race);
+        RaceDTO raceDTO = RaceFacade.raceToRaceDTO(race);
 
         return ResponseEntity.ok(raceDTO);
     }

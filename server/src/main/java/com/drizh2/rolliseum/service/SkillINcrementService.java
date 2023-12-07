@@ -2,6 +2,7 @@ package com.drizh2.rolliseum.service;
 
 import com.drizh2.rolliseum.dto.SkillIncrementDTO;
 import com.drizh2.rolliseum.entity.SkillIncrement;
+import com.drizh2.rolliseum.facade.SkillIncrementFacade;
 import com.drizh2.rolliseum.repository.SkillIncrementRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,10 +22,7 @@ public class SkillINcrementService {
     }
 
     public SkillIncrement createSkillIncrement(SkillIncrementDTO skillIncrementDTO) {
-        SkillIncrement skillIncrement = new SkillIncrement();
-
-        skillIncrement.setName(skillIncrementDTO.getName());
-        skillIncrement.setModificator(skillIncrement.getModificator());
+        SkillIncrement skillIncrement = SkillIncrementFacade.skillIncrementDTOToSkillIncrement(skillIncrementDTO);
 
         LOG.info("Creating {} modificator with {} value", skillIncrement.getName(), skillIncrement.getModificator());
 

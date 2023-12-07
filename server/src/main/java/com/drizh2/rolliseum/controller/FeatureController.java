@@ -17,13 +17,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/feature")
 public class FeatureController {
     private final FeatureService featureService;
-    private final FeatureFacade featureFacade;
     private final ResponseErrorValidator responseErrorValidator;
 
     @Autowired
-    public FeatureController(FeatureService featureService, FeatureFacade featureFacade, ResponseErrorValidator responseErrorValidator) {
+    public FeatureController(FeatureService featureService, ResponseErrorValidator responseErrorValidator) {
         this.featureService = featureService;
-        this.featureFacade = featureFacade;
         this.responseErrorValidator = responseErrorValidator;
     }
 
@@ -36,7 +34,7 @@ public class FeatureController {
         }
 
         Feature feature = featureService.createFeatureForRace(featureDTO);
-        FeatureDTO finalFeature = featureFacade.featureToDTO(feature);
+        FeatureDTO finalFeature = FeatureFacade.featureToDTO(feature);
 
         return ResponseEntity.ok(finalFeature);
     }
@@ -50,7 +48,7 @@ public class FeatureController {
         }
 
         Feature feature = featureService.createFeatureForClass(featureDTO);
-        FeatureDTO finalFeature = featureFacade.featureToDTO(feature);
+        FeatureDTO finalFeature = FeatureFacade.featureToDTO(feature);
 
         return ResponseEntity.ok(finalFeature);
     }
@@ -64,7 +62,7 @@ public class FeatureController {
         }
 
         Feature feature = featureService.createFeatureForSubclass(featureDTO);
-        FeatureDTO finalFeature = featureFacade.featureToDTO(feature);
+        FeatureDTO finalFeature = FeatureFacade.featureToDTO(feature);
 
         return ResponseEntity.ok(finalFeature);
     }
@@ -72,7 +70,7 @@ public class FeatureController {
     @GetMapping("/{featureId}")
     public ResponseEntity<FeatureDTO> getFeatureById(@PathVariable("featureId") String featureId) {
         Feature feature = featureService.getFeatureById(Long.parseLong(featureId));
-        FeatureDTO featureDTO = featureFacade.featureToDTO(feature);
+        FeatureDTO featureDTO = FeatureFacade.featureToDTO(feature);
 
         return new ResponseEntity<>(featureDTO, HttpStatus.OK);
     }

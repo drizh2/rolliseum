@@ -1,11 +1,16 @@
 package com.drizh2.rolliseum.dto;
 
 import jakarta.validation.constraints.NotNull;
+import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Map;
 
-@Data
+@Getter
+@Setter
+@Builder
 public class StatisticDTO {
     private Long id;
     @NotNull

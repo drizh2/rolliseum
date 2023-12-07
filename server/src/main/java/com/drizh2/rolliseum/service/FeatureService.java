@@ -1,7 +1,13 @@
 package com.drizh2.rolliseum.service;
 
 import com.drizh2.rolliseum.dto.FeatureDTO;
+import com.drizh2.rolliseum.entity.Class;
 import com.drizh2.rolliseum.entity.Feature;
+import com.drizh2.rolliseum.entity.Race;
+import com.drizh2.rolliseum.entity.Subclass;
+import com.drizh2.rolliseum.facade.ClassFacade;
+import com.drizh2.rolliseum.facade.RaceFacade;
+import com.drizh2.rolliseum.facade.SubclassFacade;
 import com.drizh2.rolliseum.repository.FeatureRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,7 +32,10 @@ public class FeatureService {
 
         feature.setName(featureDTO.getName());
         feature.setContent(featureDTO.getContent());
-        feature.setClas(featureDTO.getClas());
+
+        Class clas = ClassFacade.classDTOToClass(featureDTO.getClas());
+        feature.setClas(clas);
+
         feature.setClassLevel(featureDTO.getClassLevel());
 
         LOG.info("Creating {} feature for class {}", feature.getName(), feature.getClas().getName());
@@ -39,7 +48,9 @@ public class FeatureService {
 
         feature.setName(featureDTO.getName());
         feature.setContent(featureDTO.getContent());
-        feature.setRace(featureDTO.getRace());
+
+        Race race = RaceFacade.raceDTOToRace(featureDTO.getRace());
+        feature.setRace(race);
 
         LOG.info("Creating {} feature for race {}", feature.getName(), feature.getRace().getName());
 
@@ -51,7 +62,10 @@ public class FeatureService {
 
         feature.setName(featureDTO.getName());
         feature.setContent(featureDTO.getContent());
-        feature.setSubclass(featureDTO.getSubclass());
+
+        Subclass subclass = SubclassFacade.subclassDTOToSubclass(featureDTO.getSubclass());
+        feature.setSubclass(subclass);
+
         feature.setSubclassLevel(featureDTO.getSubclassLevel());
 
         LOG.info("Creating {} feature for subclass {}", feature.getName(), feature.getSubclass().getName());

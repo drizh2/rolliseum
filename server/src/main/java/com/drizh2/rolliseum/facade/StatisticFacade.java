@@ -2,18 +2,26 @@ package com.drizh2.rolliseum.facade;
 
 import com.drizh2.rolliseum.dto.StatisticDTO;
 import com.drizh2.rolliseum.entity.Statistic;
-import org.springframework.stereotype.Component;
 
-@Component
 public class StatisticFacade {
-    public StatisticDTO statisticToStatisticDTO(Statistic statistic) {
-        StatisticDTO statisticDTO = new StatisticDTO();
 
-        statisticDTO.setName(statistic.getName());
-        statisticDTO.setModificator(statistic.getModificator());
-        statisticDTO.setSavingThrow(statistic.isSavingThrow());
-        statisticDTO.setSkills(statistic.getSkills());
+    private StatisticFacade() {}
 
-        return statisticDTO;
+    public static StatisticDTO statisticToStatisticDTO(Statistic statistic) {
+        return StatisticDTO.builder()
+                .name(statistic.getName())
+                .modificator(statistic.getModificator())
+                .savingThrow(statistic.isSavingThrow())
+                .skills(statistic.getSkills())
+                .build();
+    }
+
+    public static Statistic statisticDTOToStatistic(StatisticDTO statisticDTO) {
+        return Statistic.builder()
+                .name(statisticDTO.getName())
+                .modificator(statisticDTO.getModificator())
+                .savingThrow(statisticDTO.isSavingThrow())
+                .skills(statisticDTO.getSkills())
+                .build();
     }
 }

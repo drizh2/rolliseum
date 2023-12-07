@@ -2,14 +2,18 @@ package com.drizh2.rolliseum.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Data
+@Getter
+@Setter
 @Table(name="characters")
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Character {
 
     @Id
@@ -90,6 +94,7 @@ public class Character {
     private List<String> treasures;
 
     @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
 
     @JsonFormat(pattern = "yyyy-mm-dd HH:mm:ss")

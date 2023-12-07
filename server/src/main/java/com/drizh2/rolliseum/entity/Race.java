@@ -2,17 +2,23 @@ package com.drizh2.rolliseum.entity;
 
 import com.drizh2.rolliseum.entity.enums.Races;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Data
+@Getter
+@Setter
+@Table(name = "races")
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Race {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false, unique = true)
     private Races name;
     @Column(nullable = false)

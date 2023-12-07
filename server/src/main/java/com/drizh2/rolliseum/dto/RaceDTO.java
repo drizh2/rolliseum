@@ -1,14 +1,16 @@
 package com.drizh2.rolliseum.dto;
 
-import com.drizh2.rolliseum.entity.Feature;
-import com.drizh2.rolliseum.entity.SkillIncrement;
 import com.drizh2.rolliseum.entity.enums.Races;
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
-@Data
+@Getter
+@Setter
+@Builder
 public class RaceDTO {
     private Long id;
     @NotNull
@@ -16,12 +18,12 @@ public class RaceDTO {
     @NotNull
     private String type;
     @NotNull
-    private List<SkillIncrement> stats;
+    private List<SkillIncrementDTO> stats;
     private String size;
     @NotNull
     private int speed;
     @NotNull
-    private List<Feature> raceFeatures;
+    private List<FeatureDTO> raceFeatures;
     @NotNull
     private List<String> languages;
 }

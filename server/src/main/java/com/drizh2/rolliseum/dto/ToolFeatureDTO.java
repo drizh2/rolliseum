@@ -1,6 +1,5 @@
 package com.drizh2.rolliseum.dto;
 
-import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,10 +7,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class SkillIncrementDTO {
+public class ToolFeatureDTO {
     private Long id;
-    @NotNull
     private String name;
-    @NotNull
-    private Integer modificator;
+    private String content;
+    private ToolDTO tool;
 }

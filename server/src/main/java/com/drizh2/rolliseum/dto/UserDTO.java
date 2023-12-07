@@ -1,9 +1,13 @@
 package com.drizh2.rolliseum.dto;
 
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
+@Builder
 public class UserDTO {
     private Long id;
     @NotNull

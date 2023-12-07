@@ -9,19 +9,18 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-@Table(name = "subclasses")
+@Table(name = "tools")
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Subclass {
+public class Tool {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false, unique = true)
     private String name;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "subclass", orphanRemoval = true)
-    private List<Feature> subclassFeatures = new ArrayList<>();
-    @ManyToOne
-    @JoinColumn(name = "class_id")
-    private Class clas;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "tool", orphanRemoval = true)
+    private List<ToolFeature> toolFeatures = new ArrayList<>();
+    @Column
+    private int cost;
 }

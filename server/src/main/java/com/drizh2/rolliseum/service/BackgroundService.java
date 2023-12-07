@@ -2,6 +2,7 @@ package com.drizh2.rolliseum.service;
 
 import com.drizh2.rolliseum.dto.BackgroundDTO;
 import com.drizh2.rolliseum.entity.Background;
+import com.drizh2.rolliseum.facade.BackgroundFacade;
 import com.drizh2.rolliseum.repository.BackgroundRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,14 +22,7 @@ public class BackgroundService {
     }
 
     public Background createBackground(BackgroundDTO backgroundDTO) {
-        Background background = new Background();
-
-        background.setName(backgroundDTO.getName());
-        background.setStats(backgroundDTO.getStats());
-        background.setLanguages(backgroundDTO.getLanguages());
-        background.setEquip(backgroundDTO.getEquip());
-        background.setSkills(backgroundDTO.getSkills());
-        background.setCaption(backgroundDTO.getCaption());
+        Background background = BackgroundFacade.DTOToBackground(backgroundDTO);
 
         LOG.info("Creating {} Background", background.getName());
 

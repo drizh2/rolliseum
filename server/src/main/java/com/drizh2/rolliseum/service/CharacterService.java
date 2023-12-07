@@ -2,7 +2,12 @@ package com.drizh2.rolliseum.service;
 
 import com.drizh2.rolliseum.dto.CharacterDTO;
 import com.drizh2.rolliseum.entity.Character;
+import com.drizh2.rolliseum.entity.Class;
+import com.drizh2.rolliseum.entity.Race;
 import com.drizh2.rolliseum.entity.User;
+import com.drizh2.rolliseum.facade.CharacterFacade;
+import com.drizh2.rolliseum.facade.ClassFacade;
+import com.drizh2.rolliseum.facade.RaceFacade;
 import com.drizh2.rolliseum.repository.CharacterRepository;
 import com.drizh2.rolliseum.repository.UserRepository;
 import org.slf4j.Logger;
@@ -29,12 +34,9 @@ public class CharacterService {
 
     public Character createCharacter(CharacterDTO characterDTO, Principal principal) {
         User user = getUserByPrincipal(principal);
-        Character character = new Character();
+        Character character = CharacterFacade.characterDTOToCharacter(characterDTO);
 
         character.setUser(user);
-        character.setName(characterDTO.getName());
-        character.setClas(characterDTO.getClas());
-        character.setRace(characterDTO.getRace());
 
         LOG.info("User {} is creating character", user.getUsername());
         return characterRepository.save(character);
@@ -43,9 +45,7 @@ public class CharacterService {
     public Character updateCharacter(CharacterDTO characterDTO, Long id) {
         Character character = getCharacterById(id);
 
-        character.setName(characterDTO.getName());
-        character.setClas(characterDTO.getClas());
-        character.setRace(characterDTO.getRace());
+        character = CharacterFacade.characterDTOToCharacter(characterDTO);
 
         return characterRepository.save(character);
     }

@@ -21,27 +21,25 @@ import java.security.Principal;
 public class UserController {
 
     private final UserService userService;
-    private final UserFacade userFacade;
     private final ResponseErrorValidator responseErrorValidator;
 
     @Autowired
-    public UserController(UserService userService, UserFacade userFacade, ResponseErrorValidator responseErrorValidator) {
+    public UserController(UserService userService, ResponseErrorValidator responseErrorValidator) {
         this.userService = userService;
-        this.userFacade = userFacade;
         this.responseErrorValidator = responseErrorValidator;
     }
 
     @GetMapping("/")
     public ResponseEntity<UserDTO> getCurrentUser(Principal principal) {
         User user = userService.getCurrentUser(principal);
-        UserDTO userDTO = userFacade.userToUserDTO(user);
+        UserDTO userDTO = UserFacade.userToUserDTO(user);
         return new ResponseEntity<>(userDTO, HttpStatus.OK);
     }
 
     @GetMapping("/{userId}")
     public ResponseEntity<UserDTO> getUserById(@PathVariable("userId") String userId) {
         User user = userService.getUserById(Long.parseLong(userId));
-        UserDTO userDTO = userFacade.userToUserDTO(user);
+        UserDTO userDTO = UserFacade.userToUserDTO(user);
         return new ResponseEntity<>(userDTO, HttpStatus.OK);
     }
 
@@ -53,7 +51,7 @@ public class UserController {
         if (!ObjectUtils.isEmpty(errorMap)) return errorMap;
 
         User user = userService.updateUser(userDTO, principal);
-        UserDTO userDTOResult = userFacade.userToUserDTO(user);
+        UserDTO userDTOResult = UserFacade.userToUserDTO(user);
 
         return new ResponseEntity<>(userDTOResult, HttpStatus.OK);
     }

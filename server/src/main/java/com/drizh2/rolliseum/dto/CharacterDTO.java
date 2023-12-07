@@ -1,38 +1,38 @@
 package com.drizh2.rolliseum.dto;
 
-import com.drizh2.rolliseum.entity.Class;
-import com.drizh2.rolliseum.entity.*;
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
-@Data
+@Getter
+@Setter
+@Builder
 public class CharacterDTO {
     private Long id;
     @NotNull
     private String name;
-//    @NotNull
-    private Class clas;
-//    @NotNull
-    private Subclass subclass;
-    private Race race;
+    private ClassDTO clas;
+    private SubclassDTO subclass;
+    private RaceDTO race;
     private int level;
-    private Background background;
+    private BackgroundDTO background;
     private String alignment;
     private String playerName;
 
-    private Statistic strengthStat;
-    private Statistic dexterityStat;
-    private Statistic constitutionStat;
-    private Statistic intelligenceStat;
-    private Statistic wisdomStat;
-    private Statistic charismaStat;
+    private StatisticDTO strengthStat;
+    private StatisticDTO dexterityStat;
+    private StatisticDTO constitutionStat;
+    private StatisticDTO intelligenceStat;
+    private StatisticDTO wisdomStat;
+    private StatisticDTO charismaStat;
 
     private int armorClass;
     private int totalHitDice;
 
-    private List<Weapon> weapons;
+    private List<WeaponDTO> weapons;
 
     private String personaltyTraits;
     private String ideals;
