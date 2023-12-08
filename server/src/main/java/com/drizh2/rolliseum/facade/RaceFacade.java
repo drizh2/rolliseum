@@ -57,4 +57,30 @@ public class RaceFacade {
                 .raceFeatures(new ArrayList<>())
                 .build();
     }
+
+    public static RaceDTO getRequestRaceMapping(Race race) {
+        RaceDTO raceDTO = RaceDTO.builder()
+                .id(race.getId())
+                .name(race.getName())
+                .type(race.getType())
+                .size(race.getSize())
+                .speed(race.getSpeed())
+                .languages(race.getLanguages())
+                .build();
+
+        List<SkillIncrementDTO> skillIncrementDTOList = race.getStats().stream()
+                .map(SkillIncrementFacade::skillIncrementToSkillIncrementDTO)
+                .toList();
+        raceDTO.setStats(skillIncrementDTOList);
+
+        if (Objects.nonNull(race.getRaceFeatures())) {
+            List<FeatureDTO> featureDTOList = race.getRaceFeatures().stream()
+                    .map(FeatureFacade::getRequestMapper)
+                    .toList();
+
+            raceDTO.setRaceFeatures(featureDTOList);
+        }
+
+        return raceDTO;
+    }
 }

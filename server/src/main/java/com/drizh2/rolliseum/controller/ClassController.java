@@ -41,7 +41,7 @@ public class ClassController {
     @GetMapping("/{classId}")
     public ResponseEntity<ClassDTO> getClassById(@PathVariable("classId") String classId) {
         Class clas = classService.getClassById(Long.parseLong(classId));
-        ClassDTO classDTO = ClassFacade.classToClassDTO(clas);
+        ClassDTO classDTO = ClassFacade.getRequestMapping(clas);
 
         return ResponseEntity.ok(classDTO);
     }

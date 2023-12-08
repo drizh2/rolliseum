@@ -42,7 +42,7 @@ public class RaceController {
     @GetMapping("/{raceId}")
     public ResponseEntity<RaceDTO> getRaceById(@PathVariable("raceId") String raceId) {
         Race race = raceService.getRaceById(Long.parseLong(raceId));
-        RaceDTO raceDTO = RaceFacade.raceToRaceDTO(race);
+        RaceDTO raceDTO = RaceFacade.getRequestRaceMapping(race);
 
         return ResponseEntity.ok(raceDTO);
     }

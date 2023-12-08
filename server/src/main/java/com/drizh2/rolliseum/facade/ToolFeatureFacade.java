@@ -4,7 +4,6 @@ import com.drizh2.rolliseum.dto.ToolDTO;
 import com.drizh2.rolliseum.dto.ToolFeatureDTO;
 import com.drizh2.rolliseum.entity.Tool;
 import com.drizh2.rolliseum.entity.ToolFeature;
-import org.springframework.stereotype.Component;
 
 import java.util.Objects;
 
@@ -36,5 +35,12 @@ public class ToolFeatureFacade {
         }
 
         return toolFeature;
+    }
+
+    public static ToolFeatureDTO getRequestMqpping(ToolFeature toolFeature) {
+        return ToolFeatureDTO.builder()
+                .name(toolFeature.getName())
+                .content(toolFeature.getContent())
+                .build();
     }
 }

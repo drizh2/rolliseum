@@ -48,4 +48,14 @@ public class FeatureFacade {
                 .subclassLevel(featureDTO.getSubclassLevel())
                 .build();
     }
+
+    public static FeatureDTO getRequestMapper(Feature feature) {
+
+        return FeatureDTO.builder()
+                .name(feature.getName())
+                .content(feature.getContent())
+                .classLevel(feature.getClassLevel())
+                .subclassLevel(feature.getSubclassLevel())
+                .build();
+    }
 }

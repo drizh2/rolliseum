@@ -44,4 +44,16 @@ public class SubclassFacade {
 
         return subclass;
     }
+
+    public static SubclassDTO getRequestMapper(Subclass subclass) {
+        List<FeatureDTO> featureDTOList = subclass.getSubclassFeatures().stream()
+                .map(FeatureFacade::getRequestMapper)
+                .toList();
+
+        return SubclassDTO.builder()
+                .id(subclass.getId())
+                .name(subclass.getName())
+                .subclassFeatures(featureDTOList)
+                .build();
+    }
 }
