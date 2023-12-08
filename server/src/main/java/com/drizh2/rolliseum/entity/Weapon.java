@@ -22,7 +22,6 @@ public class Weapon {
 
     @ElementCollection(targetClass = WeaponTypes.class)
     @JoinTable(name = "weapon_types", joinColumns = @JoinColumn(name = "weapon_id"))
-    @Column(name = "weapon_types", nullable = false)
     @Enumerated(EnumType.STRING)
     private List<WeaponTypes> types;
 

@@ -29,4 +29,9 @@ public class WeaponService {
         return weaponRepository.save(weapon);
     }
 
+    public Weapon getWeaponById(Long id) {
+        return weaponRepository.findWeaponById(id)
+                .orElse(null);
+    }
+
 }

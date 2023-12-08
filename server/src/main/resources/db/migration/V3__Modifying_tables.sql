@@ -17,4 +17,4 @@ alter table races modify column name  enum ('AARAKOCRA','AASIMAR','ASTRAL_ELF','
 alter table spells modify column caption  text;
 alter table tool_features modify column content  text not null;
 alter table users modify column creation_date  datetime(6);
-alter table weapon_types modify column weapon_types  enum ('AXES','BOWS','CROSSBOWS','DAGGERS','EXOTIC','FIST','GUNS','HAND_TO_HAND','LONG_RANGE','MACES','OFF_HAND','POLEARMS','RELICS','SIMPLE','STAVES','SWORDS','THROWN','WANDS','WARGLAIVES','WARRIORS') not null;
+alter table weapon_types modify column types  enum ('AXES','BOWS','CROSSBOWS','DAGGERS','EXOTIC','FIST','GUNS','HAND_TO_HAND','LONG_RANGE','MACES','OFF_HAND','POLEARMS','RELICS','SIMPLE','STAVES','SWORDS','THROWN','WANDS','WARGLAIVES','WARRIORS') not null;

@@ -232,7 +232,6 @@ create table weapons (
                          damage_type varchar(255),
                          farness varchar(255) not null,
                          name varchar(255) not null,
-                         types varbinary(255) not null,
                          primary key (id)
 ) engine=InnoDB;
 
@@ -258,7 +257,7 @@ create table class_weapons (
 
 create table weapon_types (
     weapon_id bigint not null,
-    weapon_types enum ('AXES','BOWS','CROSSBOWS','DAGGERS','EXOTIC','FIST','GUNS','HAND_TO_HAND','LONG_RANGE','MACES','OFF_HAND','POLEARMS','RELICS','SIMPLE','STAVES','SWORDS','THROWN','WANDS','WARGLAIVES','WARRIORS') not null
+    types enum ('AXES','BOWS','CROSSBOWS','DAGGERS','EXOTIC','FIST','GUNS','HAND_TO_HAND','LONG_RANGE','MACES','OFF_HAND','POLEARMS','RELICS','SIMPLE','STAVES','SWORDS','THROWN','WANDS','WARGLAIVES','WARRIORS') not null
                           ) engine=InnoDB;
 
 alter table backgrounds
