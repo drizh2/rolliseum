@@ -1,0 +1,22 @@
+export enum WeaponTypes {
+    SIMPLE = "Просте",
+    HAND_TO_HAND = "Рукопашне",
+    LONG_RANGE = "Далекобійне",
+    WARRIORS = "Воїнське",
+    EXOTIC = "Екзотичне",
+    BOWS = "Луки",
+    CROSSBOWS = "Арбалети",
+    GUNS = "Стрілкова",
+    THROWN = "Метальна",
+    AXES = "Сокири",
+    SWORDS = "Мечі",
+    MACES = "Булави",
+    POLEARMS = "Коп'я",
+    STAVES = "Пали",
+    DAGGERS = "Кинджали",
+    FIST = "Кулаки",
+    WARGLAIVES = "Бойові клинки",
+    WANDS = "Жезли",
+    OFF_HAND = "Безручна",
+    RELICS = "Реліквія"
+}

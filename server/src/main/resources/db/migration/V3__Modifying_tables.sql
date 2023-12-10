@@ -15,6 +15,7 @@ alter table features modify column content  text;
 alter table image_model modify column image_bytes  LONGBLOB;
 alter table races modify column name  enum ('AARAKOCRA','AASIMAR','ASTRAL_ELF','AUTOGNOME','BUGBEAR','CENTAUR','CHANGELING','DEEP_GNOME','DRAGONBORN','DUERGAR','DWARF','ELADRIN','ELF','FAIRY','FIRBOLG','GENASI','GENASI_AIR','GENASI_EARTHR','GENASI_FAIR','GENASI_WATER','GIFF','GITH','GITHYANKI','GITHZERAI','GLITCHLING','GNOME','GOBLIN','GOLIATH','GRUNG','HADOZEE','HALFLING','HALF_ELF','HALF_ORC','HARENGON','HOBGOBLIN','HUMAN','KALASHTAR','KENDER','KENKU','KOBOLD','LEONIN','LIZARDFOLK','LOCATHAH','LOXODON','MINOTAUR','ORC','OWLIN','PLASMOID','SATYR','SEA_ELF','SHADAR_KAI','SHIFTER','SIMIC_HYBRID','TABAXI','THRI_KREEN','TIEFLING','TORTLE','TRITON','VEDALKEN','VERDAN','WARFORGED','YUAN_TI') not null;
 alter table spells modify column caption  text;
+alter table statistic_skills modify column skills  enum ('ACROBATICS','ANIMAL_HANDLING','ARCANA','ATHLETICS','DECEPTION','HISTORY','INSIGHT','INTIMIDATION','INVESTIGATION','MEDICINE','NATURE','PERCEPTION','PERFORMANCE','PERSUASION','RELIGION','SLEIGHT_OF_HAND','STEALTH','SURVIVAL');
 alter table tool_features modify column content  text not null;
 alter table users modify column creation_date  datetime(6);
 alter table weapon_types modify column types  enum ('AXES','BOWS','CROSSBOWS','DAGGERS','EXOTIC','FIST','GUNS','HAND_TO_HAND','LONG_RANGE','MACES','OFF_HAND','POLEARMS','RELICS','SIMPLE','STAVES','SWORDS','THROWN','WANDS','WARGLAIVES','WARRIORS') not null;

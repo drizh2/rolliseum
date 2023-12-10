@@ -1,9 +1,11 @@
 package com.drizh2.rolliseum.entity;
 
+import com.drizh2.rolliseum.entity.enums.Skills;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -22,7 +24,9 @@ public class Statistic {
     private int modificator;
     @Column
     private boolean savingThrow;
-    @Column
-    @ElementCollection(targetClass = Boolean.class)
-    private Map<String, Boolean> skills;
+
+    @ElementCollection(targetClass = Skills.class)
+    @JoinTable(name = "statistic_skills", joinColumns = @JoinColumn(name = "statistic_id"))
+    @Enumerated(EnumType.STRING)
+    private List<Skills> skills = new ArrayList<>();
 }

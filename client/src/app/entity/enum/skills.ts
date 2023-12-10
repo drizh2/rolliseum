@@ -1,0 +1,20 @@
+export enum Skills {
+    ACROBATICS = "Акробатика",
+    ANIMAL_HANDLING = "Догляд тварин",
+    ARCANA = "Містицизм",
+    ATHLETICS = "Атлетика",
+    DECEPTION = "Обман",
+    HISTORY = "Історія",
+    INSIGHT = "Аналіз поведінки",
+    INTIMIDATION = "Залякування",
+    INVESTIGATION = "Обстеження",
+    MEDICINE = "Медицина",
+    NATURE = "Природа",
+    PERCEPTION = "Уважність",
+    PERFORMANCE = "Артистичність",
+    PERSUASION = "Переконливість",
+    RELIGION = "Релігія",
+    SLEIGHT_OF_HAND = "Спритність рук",
+    STEALTH = "Cкритність",
+    SURVIVAL = "Виживання"
+}

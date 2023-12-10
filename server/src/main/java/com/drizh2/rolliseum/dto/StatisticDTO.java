@@ -1,12 +1,12 @@
 package com.drizh2.rolliseum.dto;
 
+import com.drizh2.rolliseum.entity.enums.Skills;
 import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Map;
+import java.util.List;
 
 @Getter
 @Setter
@@ -20,5 +20,5 @@ public class StatisticDTO {
     @NotNull
     private boolean savingThrow;
     @NotNull
-    private Map<String, Boolean> skills;
+    private List<Skills> skills;
 }
