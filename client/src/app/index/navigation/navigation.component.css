@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap');
+
+.mat-toolbar{
+  font-family: 'Metal Mania';
+}
+
+.mat-toolbar h3, .mat-toolbar a {
+  font-size: 120%;
+  font-family: 'Metal Mania';
+}
+
+.mat-toolbar #element {
+  margin-right: 60px;
+}
+
+#row {
+  display: flex;
+  align-items: center;
+}
+
+#row h3 {
+  margin-right: 20px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+#menu-item button {
+  display: block;
+  margin: 0 auto;
+}
+
+.mat-toolbar.mat-primary {
+  background: #900000;
+  color: #E8e5e5;
+}

@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
                 this.loginForm = this.createLoginForm();
 
                 if (this.tokenStorage.getUser()) {
-                  this.router.navigate(['main']);
+                  this.router.navigate(['/']);
                 }
               }
   

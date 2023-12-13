@@ -1,0 +1,29 @@
+<mat-toolbar color="primary">
+    <span routerLink="/main" style="font-size: 150%; background: inherit; cursor: pointer; margin-left: 20px;">Rolliseum</span>
+  
+    <span class="spacer"></span>
+    <div id="row" *ngIf="isDataLoaded">
+        <a  id="element">About us</a>
+        <a id="element">Create character</a>
+        <h3>{{this.user.username}}</h3>
+
+        <button *ngIf="isLoggedIn" [matMenuTriggerFor]="menu" matTooltip="Profile" mat-icon-button>
+            <mat-icon [ngStyle]="{'color':'#Cea0a0'}" color="accent">account_box</mat-icon>
+        </button>
+    </div>
+
+    <div id="row" *ngIf="!isLoggedIn">
+        <h3>Enter the dungeon</h3>
+        <button matTooltip="Login" routerLink="/login" mat-icon-button class="example-icon favorite-icon">
+            <mat-icon>login</mat-icon>
+        </button>
+    </div>
+  
+    
+    <mat-menu id="menu-item" #menu="matMenu">
+      <button mat-menu-item routerLink="/profile">Profile</button>
+      <button (click)="logout()" mat-menu-item>
+        Logout
+      </button>
+    </mat-menu>
+</mat-toolbar>

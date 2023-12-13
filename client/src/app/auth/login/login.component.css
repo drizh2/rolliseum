@@ -9,6 +9,54 @@
     width: 40%;
 }
 
+.mat-input {
+    color: #00ff0d;
+}
+
 mat-form-field {
     width: 30%;
 }
+
+.mffield {
+    width: 350px;
+    font-size: 14px;
+    margin-bottom: -15px;
+}
+  
+.mffield mat-label {
+    color: #990604;
+    /* add label text color here */
+}
+  
+.mffield .mat-input-element {
+    color: #990604;
+    /* add input text color here */
+}
+  
+.mffield .mat-input-element::placeholder {
+    color: #990604;
+    /* add placeholder css here */
+}
+
+/* :host {
+    --mat-form-field-outline-color: red;
+} */
+  
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__leading,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__notch,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__trailing {
+  border-color: red !important;
+}
+
+.mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__leading,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__notch,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__trailing {
+  border-color: red !important;
+}
+
+.mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline .mdc-notched-outline__leading,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline .mdc-notched-outline__notch,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline .mdc-notched-outline__trailing {
+  border-color: red !important;
+}
+
