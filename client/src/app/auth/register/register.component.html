@@ -1,29 +1,29 @@
 <div class="register-page">
-    <h2>Register</h2>
+    <h2 id="styled-label">Register</h2>
     <form [formGroup]="registerForm">
         <div class="justify-content-center">
-            <mat-form-field appearance="outline">
+            <mat-form-field class="mffield" appearance="outline">
                 <mat-label>Email</mat-label>
                 <input type="email" matInput formControlName="email">
             </mat-form-field>
         </div>
 
         <div class="justify-content-center">
-            <mat-form-field appearance="outline">
+            <mat-form-field class="mffield" appearance="outline">
                 <mat-label>Username</mat-label>
                 <input matInput formControlName="username">
             </mat-form-field>
         </div>
         
         <div class="justify-content-center">
-            <mat-form-field appearance="outline">
+            <mat-form-field class="mffield" appearance="outline">
                 <mat-label>Password</mat-label>
                 <input type="password" matInput formControlName="password">
             </mat-form-field>
         </div>
 
         <div class="justify-content-center">
-            <mat-form-field appearance="outline">
+            <mat-form-field class="mffield" appearance="outline">
                 <mat-label>Password Confirmation</mat-label>
                 <input type="password" matInput formControlName="passwordConfirmation">
             </mat-form-field>
@@ -36,7 +36,7 @@
         </div>
 
         <div>
-            <p>Already have an account? <a routerLink="/login">Sign In</a></p>
+            <p id="under-label">Already have an account? <a routerLink="/login">Sign In</a></p>
         </div>
     </form>
 </div>

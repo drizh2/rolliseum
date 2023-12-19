@@ -9,6 +9,37 @@
     width: 40%;
 }
 
+#styled-label {
+    font-family: 'Metal Mania';
+    font-size: 250%;
+    margin-bottom: 25px;
+}
+
+#under-label {
+    margin-top: 20px;
+    font-family: 'Metal Mania';
+    font-size: 150%;
+}
+
 mat-form-field {
     width: 30%;
+}
+
+.mffield {
+    width: 25%;
+    font-size: 14px;
+    margin-bottom: -5px;
+    --mdc-outlined-text-field-outline-color: #990604;
+    --mdc-outlined-text-field-focus-outline-color: #990604;
+    --mdc-outlined-text-field-error-outline-color: #ffbb00;
+    --mdc-floating-label: #ffbb00;
+    --mdc-outlined-text-field-error-label-text-color: #c08d02;
+    --mdc-outlined-text-field-label-text-color: #990604;
+    --mdc-outlined-text-field-focus-label-text-color: #990604;
+}
+
+.mat-mdc-unelevated-button.mat-primary {
+    margin-top: 15px;
+    --mdc-filled-button-container-color: #990604;
+    --mdc-filled-button-label-text-color: #2b0404;
 }

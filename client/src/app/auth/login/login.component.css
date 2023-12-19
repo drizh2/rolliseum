@@ -9,6 +9,18 @@
     width: 40%;
 }
 
+#styled-label {
+    font-family: 'Metal Mania';
+    font-size: 250%;
+    margin-bottom: 25px;
+}
+
+#under-label {
+    margin-top: 20px;
+    font-family: 'Metal Mania';
+    font-size: 150%;
+}
+
 .mat-input {
     color: #00ff0d;
 }
@@ -20,43 +32,18 @@ mat-form-field {
 .mffield {
     width: 350px;
     font-size: 14px;
-    margin-bottom: -15px;
-}
-  
-.mffield mat-label {
-    color: #990604;
-    /* add label text color here */
-}
-  
-.mffield .mat-input-element {
-    color: #990604;
-    /* add input text color here */
-}
-  
-.mffield .mat-input-element::placeholder {
-    color: #990604;
-    /* add placeholder css here */
+    margin-bottom: -5px;
+    --mdc-outlined-text-field-outline-color: #990604;
+    --mdc-outlined-text-field-focus-outline-color: #990604;
+    --mdc-outlined-text-field-error-outline-color: #ffbb00;
+    --mdc-floating-label: #ffbb00;
+    --mdc-outlined-text-field-error-label-text-color: #c08d02;
+    --mdc-outlined-text-field-label-text-color: #990604;
+    --mdc-outlined-text-field-focus-label-text-color: #990604;
 }
 
-/* :host {
-    --mat-form-field-outline-color: red;
-} */
-  
-.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__leading,
-.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__notch,
-.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__trailing {
-  border-color: red !important;
+.mat-mdc-unelevated-button.mat-primary {
+    margin-top: 15px;
+    --mdc-filled-button-container-color: #990604;
+    --mdc-filled-button-label-text-color: #2b0404;
 }
-
-.mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__leading,
-.mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__notch,
-.mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__trailing {
-  border-color: red !important;
-}
-
-.mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline .mdc-notched-outline__leading,
-.mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline .mdc-notched-outline__notch,
-.mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline .mdc-notched-outline__trailing {
-  border-color: red !important;
-}
-
