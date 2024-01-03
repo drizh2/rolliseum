@@ -29,5 +29,10 @@ public class BackgroundService {
         return backgroundRepository.save(background);
     }
 
+    public Background getBackgroundById(Long backgroundId) {
+        return backgroundRepository.findBackgroundById(backgroundId)
+                .orElse(null);
+    }
+
 
 }
