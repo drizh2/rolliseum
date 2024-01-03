@@ -1,0 +1,25 @@
+<div *ngIf="isDataLoaded" class="user-profile">
+    <h1>Profile</h1>
+    <div style="text-align: right">
+      <button mat-flat-button id="button">Edit Info</button>
+    </div>
+  
+    <div class="row">
+      <div class="col">
+        <img class="profile-image" [src]="previewImageUrl || formatImage(userImage) || 'https://cdn-icons-png.flaticon.com/512/149/149071.png'" alt="user image">
+  
+        <input type="file" style="display: none" #fileInput (change)="onFileSelected($event)">
+  
+        <button mat-button (click)="fileInput.click()">Pick File</button>
+        <button mat-button *ngIf="selectedImage" (click)="onUpload()">Upload</button>
+      </div>
+      <div class="col" style="text-align: left">
+  
+        <h2>{{user.username}}</h2>
+  
+        <h3>{{ user.email }}</h3>
+      </div>
+  
+      <mat-divider></mat-divider>  
+    </div>
+</div>

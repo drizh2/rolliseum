@@ -3,7 +3,6 @@ package com.drizh2.rolliseum.service;
 import com.drizh2.rolliseum.entity.Character;
 import com.drizh2.rolliseum.entity.ImageModel;
 import com.drizh2.rolliseum.entity.User;
-import com.drizh2.rolliseum.exception.ImageNotFoundException;
 import com.drizh2.rolliseum.repository.ImageRepository;
 import com.drizh2.rolliseum.repository.UserRepository;
 import org.slf4j.Logger;
@@ -76,7 +75,7 @@ public class ImageModelService {
         User user = getUserByPrincipal(principal);
 
         ImageModel imageModel = imageRepository.findImageModelByUserId(user.getId())
-                .orElseThrow(() -> new ImageNotFoundException("Image has not been found for this user!"));
+                .orElse(null);
 
         if (!ObjectUtils.isEmpty(imageModel)) {
             imageModel.setImageBytes(decompressBytes(imageModel.getImageBytes()));
@@ -87,7 +86,7 @@ public class ImageModelService {
 
     public ImageModel getImageToCharacter(Long characterId) {
         ImageModel imageModel = imageRepository.findImageModelByCharacterId(characterId)
-                .orElseThrow(() -> new ImageNotFoundException("Image has not been found for this character!"));
+                .orElse(null);
 
         if (!ObjectUtils.isEmpty(imageModel)) {
             imageModel.setImageBytes(decompressBytes(imageModel.getImageBytes()));
